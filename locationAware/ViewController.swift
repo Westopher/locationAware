@@ -11,6 +11,14 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet var LatitudeLabel: UILabel!
+    @IBOutlet var longitudeLabel: UILabel!
+    @IBOutlet var courseLabel: UILabel!
+    @IBOutlet var speedLabel: UILabel!
+    @IBOutlet var altitudeLabel: UILabel!
+    @IBOutlet var addressLabel: UILabel!
+    
+    
     var manager = CLLocationManager()
 
     override func viewDidLoad() {
@@ -26,7 +34,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        print(locations)
+        let location = locations[0]
+        
+        self.LatitudeLabel.text = String(location.coordinate.latitude)
+        
+        self.longitudeLabel.text = String(location.coordinate.longitude)
+        
+        self.courseLabel.text = String(location.course)
+        
+        self.speedLabel.text = String(location.speed)
+        
+        self.altitudeLabel.text = String(location.altitude)
         
     }
 
